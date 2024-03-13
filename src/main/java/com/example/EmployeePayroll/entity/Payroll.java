@@ -1,12 +1,22 @@
 package com.example.EmployeePayroll.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
 public class Payroll {
+    @Id
+    private int payRollId;
     private double salary;
     private double allowances;
     private double taxes;
+
+    public double getPayRollId() {
+        return salary;
+    }
+    public void setPayRollId(int payRollId) {
+        this.payRollId = payRollId;
+    }
 
     public double getSalary() {
         return salary;
@@ -41,7 +51,8 @@ public class Payroll {
     @Override
     public String toString() {
         return "Payroll{" +
-                "salary=" + salary +
+                "payRollId=" + payRollId +
+                ", salary=" + salary +
                 ", allowances=" + allowances +
                 ", taxes=" + taxes +
                 '}';
