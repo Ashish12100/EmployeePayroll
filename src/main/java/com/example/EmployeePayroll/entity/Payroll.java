@@ -1,5 +1,8 @@
 package com.example.EmployeePayroll.entity;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class Payroll {
     private double salary;
     private double allowances;

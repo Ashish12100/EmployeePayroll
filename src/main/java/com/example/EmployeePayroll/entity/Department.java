@@ -1,6 +1,11 @@
 package com.example.EmployeePayroll.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Department {
+    @Id
     private int deptId;
     private String deptName;
 
