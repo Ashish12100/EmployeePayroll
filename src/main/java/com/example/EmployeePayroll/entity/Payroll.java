@@ -1,18 +1,24 @@
 package com.example.EmployeePayroll.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.springframework.stereotype.Component;
 
 @Entity
+@Component
+@Table(name = "payroll")
 public class Payroll {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int payRollId;
     private double salary;
     private double allowances;
     private double taxes;
 
-    public double getPayRollId() {
-        return salary;
+    @OneToOne
+    private Employee emp;
+
+    public int getPayRollId() {
+        return payRollId;
     }
     public void setPayRollId(int payRollId) {
         this.payRollId = payRollId;

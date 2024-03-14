@@ -1,17 +1,25 @@
 package com.example.EmployeePayroll.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
-@Component
 @Entity
+@Component
+@Table(name = "employee")
 public class Employee {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int empId;
     private String  name;
     private long number;
     private String address;
+
+    @ManyToOne
+    @JoinColumn(name = "deptId")
+    private Department dept;
+
+    @OneToOne(mappedBy = "emp")
+    private Payroll payroll;
 
     public int getEmpId() {
         return empId;
