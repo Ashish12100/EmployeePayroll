@@ -1,26 +1,16 @@
 package com.example.EmployeePayroll.entity;
 
 import jakarta.persistence.*;
-import org.springframework.stereotype.Component;
+import lombok.*;
 
+import java.util.List;
+
+
+
+@ToString
 @Entity
-@Component
 @Table(name = "employee")
 public class Employee {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int empId;
-    private String  name;
-    private long number;
-    private String address;
-
-    @ManyToOne
-    @JoinColumn(name = "deptId")
-    private Department dept;
-
-    @OneToOne(mappedBy = "emp")
-    private Payroll payroll;
-
     public int getEmpId() {
         return empId;
     }
@@ -37,7 +27,7 @@ public class Employee {
         this.name = name;
     }
 
-    public double getNumber() {
+    public long getNumber() {
         return number;
     }
 
@@ -53,23 +43,71 @@ public class Employee {
         this.address = address;
     }
 
-    public Employee() {
+    public Department getDeptId() {
+        return deptId;
     }
 
-    public Employee(int empId, String name, long number, String address) {
-        this.empId = empId;
-        this.name = name;
-        this.number = number;
-        this.address = address;
+    public void setDeptId(Department deptId) {
+        this.deptId = deptId;
     }
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "empId=" + empId +
-                ", name='" + name + '\'' +
-                ", salary=" + number +
-                ", address='" + address + '\'' +
-                '}';
+    public Payroll getPayrollId() {
+        return payrollId;
     }
+
+    public void setPayrollId(Payroll payrollId) {
+        this.payrollId = payrollId;
+    }
+
+    public ProjectDetails getProjectDetails() {
+        return projectDetails;
+    }
+
+    public void setProjectDetails(ProjectDetails projectDetails) {
+        this.projectDetails = projectDetails;
+    }
+
+    public PerformanceReview getPerformanceReview() {
+        return performanceReview;
+    }
+
+    public void setPerformanceReview(PerformanceReview performanceReview) {
+        this.performanceReview = performanceReview;
+    }
+
+    public List<LeaveDetails> getLeaveId() {
+        return leaveId;
+    }
+
+    public void setLeaveId(List<LeaveDetails> leaveId) {
+        this.leaveId = leaveId;
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int empId;
+    private String name;
+    private long number;
+    private String address;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "deptId", referencedColumnName = "deptId")
+    private Department deptId;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "payRollId", referencedColumnName = "payRollId")
+    private Payroll payrollId;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "projectId", referencedColumnName = "projectId")
+    private ProjectDetails projectDetails;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "prId", referencedColumnName = "prId")
+    private PerformanceReview performanceReview;
+
+    @ManyToMany
+    @JoinTable(name="leave-details", joinColumns = @JoinColumn(name = "leaveId"))
+    private List<LeaveDetails> leaveId;
+
 }

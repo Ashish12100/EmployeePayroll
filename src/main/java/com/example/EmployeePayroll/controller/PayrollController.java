@@ -1,9 +1,6 @@
 package com.example.EmployeePayroll.controller;
 
-import com.example.EmployeePayroll.entity.Employee;
 import com.example.EmployeePayroll.entity.Payroll;
-import com.example.EmployeePayroll.service.DepartmentService;
-import com.example.EmployeePayroll.service.EmployeeService;
 import com.example.EmployeePayroll.service.PayrollService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,9 +11,13 @@ import java.util.List;
 @Controller
 @RequestMapping("/api/payroll")
 public class PayrollController {
+    private final PayrollService payrollService;
+
     @Autowired
-    PayrollService payrollService;
-    
+    public PayrollController(PayrollService payrollService) {
+        this.payrollService = payrollService;
+    }
+
     @PostMapping("/createPayroll")
     public Payroll createPayroll(@RequestBody Payroll payroll){
         return payrollService.createPayroll(payroll);

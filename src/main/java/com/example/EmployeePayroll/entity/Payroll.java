@@ -1,10 +1,15 @@
 package com.example.EmployeePayroll.entity;
 
 import jakarta.persistence.*;
-import org.springframework.stereotype.Component;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
-@Component
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Table(name = "payroll")
 public class Payroll {
     @Id
@@ -14,12 +19,10 @@ public class Payroll {
     private double allowances;
     private double taxes;
 
-    @OneToOne
-    private Employee emp;
-
     public int getPayRollId() {
         return payRollId;
     }
+
     public void setPayRollId(int payRollId) {
         this.payRollId = payRollId;
     }
@@ -27,6 +30,7 @@ public class Payroll {
     public double getSalary() {
         return salary;
     }
+
     public void setSalary(double salary) {
         this.salary = salary;
     }
@@ -34,6 +38,7 @@ public class Payroll {
     public double getAllowances() {
         return allowances;
     }
+
     public void setAllowances(double allowances) {
         this.allowances = allowances;
     }
@@ -41,26 +46,8 @@ public class Payroll {
     public double getTaxes() {
         return taxes;
     }
+
     public void setTaxes(double taxes) {
         this.taxes = taxes;
-    }
-
-    public Payroll() {
-    }
-
-    public Payroll(double salary, double allowances, double taxes) {
-        this.salary = salary;
-        this.allowances = allowances;
-        this.taxes = taxes;
-    }
-
-    @Override
-    public String toString() {
-        return "Payroll{" +
-                "payRollId=" + payRollId +
-                ", salary=" + salary +
-                ", allowances=" + allowances +
-                ", taxes=" + taxes +
-                '}';
     }
 }

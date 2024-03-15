@@ -11,9 +11,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/dept")
 public class DepartmentController {
+
+   private final DepartmentService departmentService;
+
     @Autowired
-    DepartmentService departmentService;
-    
+    public DepartmentController(DepartmentService departmentService) {
+        this.departmentService = departmentService;
+    }
+
     @PostMapping("/createDept")
     public Department createDept(@RequestBody Department dept){
         return departmentService.createDepartment(dept);

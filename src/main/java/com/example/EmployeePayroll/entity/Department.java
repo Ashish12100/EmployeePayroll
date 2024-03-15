@@ -1,12 +1,16 @@
 package com.example.EmployeePayroll.entity;
 
 import jakarta.persistence.*;
-import org.springframework.stereotype.Component;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-import java.util.List;
-
-@Component
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Table(name = "department")
 public class Department {
     @Id
@@ -14,14 +18,8 @@ public class Department {
     private int deptId;
     private String deptName;
 
-    @OneToMany(mappedBy = "dept")
-    private List<Employee> emp;
     public int getDeptId() {
         return deptId;
-    }
-
-    public void setDeptId(int deptId) {
-        this.deptId = deptId;
     }
 
     public String getDeptName() {
@@ -32,19 +30,9 @@ public class Department {
         this.deptName = deptName;
     }
 
-    public Department() {
-    }
-
-    public Department(int deptId, String deptName) {
+    public void setDeptId(int deptId) {
         this.deptId = deptId;
-        this.deptName = deptName;
     }
 
-    @Override
-    public String toString() {
-        return "Department{" +
-                "deptId=" + deptId +
-                ", deptName='" + deptName + '\'' +
-                '}';
-    }
+
 }
