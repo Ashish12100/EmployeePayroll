@@ -1,6 +1,5 @@
 package com.example.EmployeePayroll.entity;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,6 +9,7 @@ import lombok.ToString;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 @ToString
 @Table(name = "project_details")
 public class ProjectDetails {
@@ -23,28 +23,4 @@ public class ProjectDetails {
     private Employee empId;
 
     private String status;
-
-    public int getProjectId() {
-        return projectId;
-    }
-
-    public void setProjectId(int projectId) {
-        this.projectId = projectId;
-    }
-
-    public Employee getEmpId() {
-        return empId;
-    }
-
-    public void setEmpId(Employee empId) {
-        this.empId = empId;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 }

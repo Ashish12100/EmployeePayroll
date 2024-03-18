@@ -22,20 +22,19 @@ public class EmployeePayrollApplication {
 				str -> {
 					System.out.println(str);
 				}
-		);*//*
-
-		abc a = new abc(1,2);
-		abc b = new abc(2,3);
-		abc c = new abc(1,2);
-		Set<abc> abcSet = new HashSet<>();
-		abcSet.add(a);
-		abcSet.add(b);
-		abcSet.add(c);
-		abcSet.stream().forEach(
-				aa -> System.out.println(aa)
 		);*/
-	}
 
+//		abc a = new abc(1,2);
+//		abc b = new abc(2,3);
+//		abc c = new abc(1,2);
+//		Set<abc> abcSet = new HashSet<>();
+//		abcSet.add(a);
+//		abcSet.add(b);
+//		abcSet.add(c);
+//		abcSet.stream().forEach(
+//				aa -> System.out.println(aa)
+//		);
+	}
 }
 
 /*

@@ -11,6 +11,7 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 @ToString
 @Table(name = "leave_details")
 public class LeaveDetails {
@@ -24,28 +25,4 @@ public class LeaveDetails {
     private List<Employee> empId;
 
     private String leaveType;
-
-    public int getLeaveId() {
-        return leaveId;
-    }
-
-    public void setLeaveId(int leaveId) {
-        this.leaveId = leaveId;
-    }
-
-    public List<Employee> getEmpId() {
-        return empId;
-    }
-
-    public void setEmpId(List<Employee> empId) {
-        this.empId = empId;
-    }
-
-    public String getLeaveType() {
-        return leaveType;
-    }
-
-    public void setLeaveType(String leaveType) {
-        this.leaveType = leaveType;
-    }
 }

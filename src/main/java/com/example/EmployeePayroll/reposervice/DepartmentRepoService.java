@@ -26,8 +26,8 @@ public class DepartmentRepoService {
     public Department updateDeptById(int id,Department dept) {
         Optional<Department> department = repo.findById(id);
         if (department.isPresent()) {
-           /* int deptId = department.get().getDeptId();
-            dept.setDeptId(deptId);*/
+            int deptId = department.get().getDeptId();
+            dept.setDeptId(deptId);
             return repo.save(dept);
         }else{
             return repo.save(dept);
